@@ -1,93 +1,332 @@
-# Streamit Laravel Admin Panel
+🎬 Cinenow Admin Panel
+Production-Ready Laravel Content Management System
+
+Cinenow Admin Panel is a scalable, secure, and modular backend system built using Laravel.
+It is designed to power streaming platforms by managing movies, collections, banners, users, and platform analytics.
+
+This system is optimized for performance, maintainability, and structured content workflows.
+
+📖 Table of Contents
+
+Project Overview
+
+System Architecture
+
+Features
+
+Technical Specifications
+
+Installation (Local)
+
+Production Deployment
+
+Environment Configuration
+
+Database Structure
+
+API Architecture
+
+Security Implementation
+
+Performance Optimization
+
+Storage & Media Handling
+
+Version Control Strategy
+
+Backup Strategy
+
+Future Roadmap
+
+Author & License
+
+📌 Project Overview
+
+Cinenow provides a centralized administrative backend for:
+
+🎥 Managing streaming content
+
+📂 Structuring collections & genres
+
+🖼 Homepage banner control
+
+👥 User monitoring
+
+📊 Dashboard analytics
+
+📤 Data exports
+
+The system is built following Laravel best practices and modular architecture.
+
+🏗 System Architecture
+Backend
+
+Laravel 9/10
+
+PHP 8.1+
+
+MVC Pattern
+
+Service Layer Structure
+
+Event-driven components
+
+Database
+
+MySQL / MariaDB
+
+Migration-based schema control
+
+Seeder-based initial data
+
+Frontend
+
+Blade Templates
+
+Bootstrap Admin UI
+
+jQuery (if used)
+
+Server
+
+Apache / Nginx
+
+VPS / Dedicated Server / cPanel Hosting
+
+🚀 Core Features
+🔐 Authentication System
+
+Secure admin login
+
+Password hashing (bcrypt)
+
+Session management
+
+CSRF protection
+
+Middleware-based access control
+
+🎥 Movie Management
+
+Add/Edit/Delete movies
+
+Assign categories & genres
+
+Featured content toggle
+
+Collection linking
+
+Thumbnail & banner upload
+
+📂 Category & Collection System
+
+Dynamic collection creation
+
+Content grouping
+
+Sorting & ordering
+
+Status-based visibility control
+
+🖼 Banner & Slider System
+
+Homepage slider management
+
+Position-based banner placement
+
+Scheduled promotion capability
+
+👥 User Management
+
+View user records
+
+Monitor activity
+
+Account status management
+
+📊 Dashboard Analytics
+
+Total movies
+
+Total users
+
+Content distribution overview
+
+System summary
+
+📤 Export Module
+
+Banner export
+
+Data export for reporting
+
+Structured output formatting
+
+🛠 Installation Guide (Development)
+Step 1 – Clone Repository
+git clone https://github.com/deepakcloudsoffical/cinenow-website.git
+cd cinenow-website
+
+Step 2 – Install Dependencies
+composer install
 
 
+If frontend assets exist:
 
-## Getting started
+npm install
+npm run build
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+Step 3 – Configure Environment
+cp .env.example .env
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
 
-## Add your files
+Update database credentials and app settings.
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+Step 4 – Generate App Key
+php artisan key:generate
 
-```
-cd existing_repo
-git remote add origin https://gitlab.com/gmits_mobile/streamit-laravel/streamit-laravel-admin-panel.git
-git branch -M main
-git push -uf origin main
-```
+Step 5 – Database Setup
+php artisan migrate
 
-## Integrate with your tools
 
-- [ ] [Set up project integrations](https://gitlab.com/gmits_mobile/streamit-laravel/streamit-laravel-admin-panel/-/settings/integrations)
+Optional:
 
-## Collaborate with your team
+php artisan db:seed
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+Step 6 – Storage Linking
+php artisan storage:link
 
-## Test and Deploy
+Step 7 – Run Server
+php artisan serve
 
-Use the built-in continuous integration in GitLab.
+🌐 Production Deployment (Ubuntu VPS Example)
+Install Requirements
+sudo apt update
+sudo apt install php php-fpm php-mysql php-cli php-mbstring php-xml php-curl unzip nginx mysql-server composer
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+Set Permissions
+sudo chown -R www-data:www-data /var/www/cinenow
+sudo chmod -R 755 /var/www/cinenow
 
-***
+Optimize Application
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+php artisan optimize
 
-# Editing this README
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+Set production mode:
 
-## Suggestions for a good README
+APP_ENV=production
+APP_DEBUG=false
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+⚙ Environment Configuration
 
-## Name
-Choose a self-explaining name for your project.
+Important .env variables:
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+APP_NAME=Cinenow
+APP_ENV=production
+APP_KEY=
+APP_DEBUG=false
+APP_URL=https://yourdomain.com
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=cinenow
+DB_USERNAME=youruser
+DB_PASSWORD=yourpassword
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+🗄 Database Structure Overview
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+Core Tables May Include:
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+users
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+movies
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+categories
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+collections
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+banners
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+exports
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+password_resets
 
-## License
-For open source projects, say how it is licensed.
+Migration-based schema ensures version control consistency.
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+📡 API Architecture (If Enabled)
+
+Web Routes:
+
+routes/web.php
+
+
+API Routes:
+
+routes/api.php
+
+
+Recommended API authentication:
+
+Laravel Sanctum
+
+🔒 Security Implementation
+
+CSRF protection enabled
+
+Input validation via Form Requests
+
+Middleware-based route protection
+
+Environment variable isolation
+
+Hashed passwords
+
+Secure file upload validation
+
+⚡ Performance Optimization
+
+Production optimization commands:
+
+php artisan optimize
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+
+
+Optional:
+
+Redis caching
+
+Queue workers
+
+CDN integration
+
+Image compression
+
+📁 Media & Storage Handling
+
+Uploaded files stored in:
+
+storage/app/public
+
+
+Public access via:
+
+public/storage
+
+
+Linked using:
+
+php artisan storage:link
+
+🔄 Git Workflow Strategy
+
+Recommended production workflow:
+
+git checkout -b feature/update-module
+git commit -m "Update module"
+git push origin feature/update-module
